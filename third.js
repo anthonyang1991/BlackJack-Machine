@@ -6,7 +6,14 @@ let hasBlackJack = false;
 let isAlive = true;
 let message = "";
 let sum =0;
-let cardArray = [firstCard,secondCard];
+let cardArray=[];
+
+
+let messageEl = document.getElementById("message-el");
+    let sumEl = document.getElementById("sum-el");
+    let cardEl = document.getElementById("cards-el");
+
+    
 
 
 
@@ -17,11 +24,13 @@ let cardArray = [firstCard,secondCard];
 function submit() {
     firstCard = Math.floor(Math.random() * 11) + 2;
     secondCard = Math.floor(Math.random() * 11) + 2;
+    cardArray=[];
+    cardArray.push(firstCard);
+    cardArray.push(secondCard)
+    
   
     
-    let messageEl = document.getElementById("message-el");
-    let sumEl = document.getElementById("sum-el");
-    let cardEl = document.getElementById("cards-el");
+    
 console.log(messageEl)
 
 
@@ -56,18 +65,19 @@ console.log(messageEl)
 
 function newCard()
 {
-    let messageEl = document.getElementById("message-el");
-    let cardEl = document.getElementById("cards-el");
-    let sumEl = document.getElementById("sum-el");
+    let newCardx =  Math.floor(Math.random() * 11) + 2;
     let drawMessaage = "Drawing a new Card from the deck";
+    let outputString =""
+    cardEl.textContent="";
    
-    let cardString = "";
-     newCardx =  Math.floor(Math.random() * 11) + 2;
+ 
 
      sum +=newCardx;
+     console.log("HERE"+cardArray.length)
     
      //cardArray =[firstCard,secondCard];
      cardArray.push(newCardx);
+
      
 
      console.log(sum);
@@ -97,12 +107,17 @@ console.log("Drawing a new card from the deck!");
 messageEl.textContent= drawMessaage;
 sumEl.textContent = "Sum: "+ sum;
 
+
 for(let i=0;i<cardArray.length;i++)
 {
 
-    cardEl.textContent = cardEl.textContent+ " "+cardArray[i]; 
+  outputString = outputString+" "+cardArray[i];
 }
 
+
+
+cardEl.textContent = "Sum : "+ outputString;
+messageEl.textContent=drawMessage;
 
 
 
